@@ -1,7 +1,7 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { cp } from 'fs';
+//import { cp } from 'fs';
 import { HttpService } from 'nestjs-http-promise';
-import { catchError, map } from 'rxjs/operators';
+//import { catchError, map } from 'rxjs/operators';
 
 @Injectable()
 export class OpenFoodFactsService {
