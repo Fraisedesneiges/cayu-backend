@@ -28,6 +28,10 @@ export class OpenFoodFactsService {
     let essentialProductInformationJson = JSON.parse(
       await essentialProductInformation,
     );
+    console.log(
+      'UCare back-end has been called and return : \n',
+      essentialProductInformationJson,
+    );
     return essentialProductInformationJson;
   }
 }
