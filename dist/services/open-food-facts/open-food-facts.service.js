@@ -27,6 +27,12 @@ let OpenFoodFactsService = class OpenFoodFactsService {
             response.data.product.image_front_small_url +
             '", "nustriscore_grade":"' +
             response.data.product.nutrition_grades +
+            '", "ecoscore_grade":"' +
+            response.data.product.ecoscore_grade +
+            '", "nova_group":"' +
+            response.data.product.nova_group +
+            '", "ingredients_analysis_tags":"' +
+            response.data.product.ingredients_analysis_tags +
             '"}')
             .catch((err) => {
             throw new common_1.HttpException(err.response.data, err.response.status);
