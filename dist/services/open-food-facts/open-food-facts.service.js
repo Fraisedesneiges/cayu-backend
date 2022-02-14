@@ -12,12 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.OpenFoodFactsService = void 0;
 const common_1 = require("@nestjs/common");
 const nestjs_http_promise_1 = require("nestjs-http-promise");
+const open_food_facts_utils_1 = require("./open-food-facts.utils");
 let OpenFoodFactsService = class OpenFoodFactsService {
     constructor(http) {
         this.http = http;
     }
     async getProductInformation(id) {
-        let essentialProductInformation = this.http
+        let productInformationReduced = this.http
             .get('https://world.openfoodfacts.org/api/v0/product/' + id + '.json')
             .then((response) => '{"product_id":"' +
             response.data.product._id +
@@ -37,9 +38,9 @@ let OpenFoodFactsService = class OpenFoodFactsService {
             .catch((err) => {
             throw new common_1.HttpException(err.response.data, err.response.status);
         });
-        let essentialProductInformationJson = JSON.parse(await essentialProductInformation);
-        console.log('UCare back-end has been called and return : \n', essentialProductInformationJson);
-        return essentialProductInformationJson;
+        let productInformationFormated = await (0, open_food_facts_utils_1.parseValuableInformation)(await productInformationReduced);
+        console.log('UCare back-end has been called and return : \n', productInformationFormated);
+        return productInformationFormated;
     }
 };
 OpenFoodFactsService = __decorate([

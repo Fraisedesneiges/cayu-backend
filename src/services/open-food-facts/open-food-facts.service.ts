@@ -1,13 +1,13 @@
 import { HttpException, Injectable } from '@nestjs/common';
-//import { cp } from 'fs';
 import { HttpService } from 'nestjs-http-promise';
-//import { catchError, map } from 'rxjs/operators';
+import { productFormated } from './interfaces/productResponse.interface';
+import { parseValuableInformation } from './open-food-facts.utils';
 
 @Injectable()
 export class OpenFoodFactsService {
   constructor(private http: HttpService) {}
-  async getProductInformation(id): Promise<JSON> {
-    let essentialProductInformation = this.http
+  async getProductInformation(id): Promise<productFormated> {
+    let productInformationReduced = this.http
       .get('https://world.openfoodfacts.org/api/v0/product/' + id + '.json')
       .then(
         (response): string =>
@@ -30,14 +30,16 @@ export class OpenFoodFactsService {
       .catch((err): string => {
         throw new HttpException(err.response.data, err.response.status);
       });
-    // Todo : formater la donnée pour ne renvoyer que les infos nécessaires au front, nottament les "labels" attributes, comprendre comment intéragir avec les observables;
-    let essentialProductInformationJson = JSON.parse(
-      await essentialProductInformation,
+
+    let productInformationFormated = await parseValuableInformation(
+      await productInformationReduced,
     );
+
     console.log(
       'UCare back-end has been called and return : \n',
-      essentialProductInformationJson,
+      productInformationFormated,
     );
-    return essentialProductInformationJson;
+
+    return productInformationFormated;
   }
 }
