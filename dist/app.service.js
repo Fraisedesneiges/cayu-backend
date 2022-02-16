@@ -10,7 +10,7 @@ exports.AppService = void 0;
 const common_1 = require("@nestjs/common");
 let AppService = class AppService {
     getResponse() {
-        return 'UCare backend is responding!';
+        return 'UCare backend is responding ! \n Please check the swagger documentation for more information on our API : https://ucare-backend.herokuapp.com/swagger';
     }
 };
 AppService = __decorate([
