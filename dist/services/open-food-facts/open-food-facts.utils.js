@@ -15,9 +15,6 @@ const isVegan = (productInformationJSON) => {
     if (productInformationJSON.ingredients_analysis_tags.includes('non-vegan')) {
         return false;
     }
-    else if (productInformationJSON.ingredients_analysis_tags.includes('vegan-status-unknown')) {
-        return undefined;
-    }
     else {
         return true;
     }
@@ -25,9 +22,6 @@ const isVegan = (productInformationJSON) => {
 const isVegetarian = (productInformationJSON) => {
     if (productInformationJSON.ingredients_analysis_tags.includes('non-vegetarian')) {
         return false;
-    }
-    else if (productInformationJSON.ingredients_analysis_tags.includes('vegetarian-status-unknown')) {
-        return undefined;
     }
     else {
         return true;

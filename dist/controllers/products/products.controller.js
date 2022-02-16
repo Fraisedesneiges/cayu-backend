@@ -15,6 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsController = void 0;
 const common_1 = require("@nestjs/common");
 const open_food_facts_service_1 = require("../../services/open-food-facts/open-food-facts.service");
+const swagger_1 = require("@nestjs/swagger");
 let ProductsController = class ProductsController {
     constructor(openFoodFactsService) {
         this.openFoodFactsService = openFoodFactsService;
@@ -27,10 +28,11 @@ __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Int32Array]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "getSpecifcProducts", null);
 ProductsController = __decorate([
+    (0, swagger_1.ApiTags)('products'),
     (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [open_food_facts_service_1.OpenFoodFactsService])
 ], ProductsController);
