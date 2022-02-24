@@ -4,4 +4,5 @@ export declare class OpenFoodFactsService {
     private http;
     constructor(http: HttpService);
     getProductInformation(id: any): Promise<productFormated>;
+    getAlternativeProductInformation(category: any): Promise<string>;
 }

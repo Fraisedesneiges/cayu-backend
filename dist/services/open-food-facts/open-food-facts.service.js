@@ -42,6 +42,45 @@ let OpenFoodFactsService = class OpenFoodFactsService {
         console.log('UCare back-end has been called and return : \n', productInformationFormated);
         return productInformationFormated;
     }
+    async getAlternativeProductInformation(category) {
+        let alternativeProductInformationReduced = this.http
+            .get('https://world.openfoodfacts.org/category/' + category + '.json')
+            .then((response) => '"alternativesProducts":[{"product_id":"' +
+            response.data.products[0]._id +
+            '", "product_title":"' +
+            response.data.products[0].product_name +
+            '", "product_image":"' +
+            response.data.products[0].image_front_small_url +
+            '", "nustriscore_grade":"' +
+            response.data.products[0].nutrition_grades +
+            '", "ecoscore_grade":"' +
+            response.data.products[0].ecoscore_grade +
+            '", "nova_group":"' +
+            response.data.products[0].nova_group +
+            '", "ingredients_analysis_tags":"' +
+            response.data.products[0].ingredients_analysis_tags +
+            '"}' +
+            '{"product_id":"' +
+            response.data.products[1]._id +
+            '", "product_title":"' +
+            response.data.products[1].product_name +
+            '", "product_image":"' +
+            response.data.products[1].image_front_small_url +
+            '", "nustriscore_grade":"' +
+            response.data.products[1].nutrition_grades +
+            '", "ecoscore_grade":"' +
+            response.data.products[1].ecoscore_grade +
+            '", "nova_group":"' +
+            response.data.products[1].nova_group +
+            '", "ingredients_analysis_tags":"' +
+            response.data.products[1].ingredients_analysis_tags +
+            '"}')
+            .catch((err) => {
+            throw new common_1.HttpException(err.response.data, err.response.status);
+        });
+        console.log('UCare back-end has been called and return : \n', alternativeProductInformationReduced);
+        return alternativeProductInformationReduced;
+    }
 };
 OpenFoodFactsService = __decorate([
     (0, common_1.Injectable)(),

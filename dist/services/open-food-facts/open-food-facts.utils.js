@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.parseValuableInformation = void 0;
+exports.parseValuableInformationAlternative = exports.parseValuableInformation = void 0;
 const parseValuableInformation = (productInformation) => {
     let productInformationJSON = JSON.parse(productInformation);
     let productInformationFormated = {};
@@ -11,6 +11,16 @@ const parseValuableInformation = (productInformation) => {
     return productInformationFormated;
 };
 exports.parseValuableInformation = parseValuableInformation;
+const parseValuableInformationAlternative = (productInformation) => {
+    let productInformationJSON = JSON.parse(productInformation);
+    let productInformationFormated = {};
+    productInformationFormated = productInformationJSON;
+    productInformationFormated.vegan = isVegan(productInformationJSON);
+    productInformationFormated.vegetarian = isVegetarian(productInformationJSON);
+    productInformationFormated.palmOilFree = isPalmOilFree(productInformationJSON);
+    return productInformationFormated;
+};
+exports.parseValuableInformationAlternative = parseValuableInformationAlternative;
 const isVegan = (productInformationJSON) => {
     if (productInformationJSON.ingredients_analysis_tags.includes('non-vegan')) {
         return false;
