@@ -6,8 +6,10 @@ export interface product {
     ecoscore_grade?: string;
     nova_group?: string;
     ingredients_analysis_tags?: string;
+    categories_hierarchy?: string;
 }
 export interface productFormated extends product {
+    firstCatego: string;
     vegan: boolean;
     vegetarian: boolean;
     palmOilFree: boolean;
