@@ -41,7 +41,9 @@ let OpenFoodFactsService = class OpenFoodFactsService {
             throw new common_1.HttpException(err.response.data, err.response.status);
         });
         let productInformationFormated = await (0, open_food_facts_utils_1.parseValuableInformation)(await productInformationReduced);
-        console.log('UCare back-end has been called and return : \n', productInformationFormated);
+        console.log('-----------------------------------' +
+            'UCare back-end has been called and return :' +
+            '\n', productInformationFormated);
         return productInformationFormated;
     }
     async getAlternativeProductInformation(category) {
@@ -80,7 +82,9 @@ let OpenFoodFactsService = class OpenFoodFactsService {
             .catch((err) => {
             throw new common_1.HttpException(err.response.data, err.response.status);
         });
-        console.log('UCare back-end has been called and return : \n', alternativeProductInformationReduced);
+        console.log('-----------------------------------' +
+            'UCare back-end has been called and return :' +
+            '\n', alternativeProductInformationReduced);
         return alternativeProductInformationReduced;
     }
 };
