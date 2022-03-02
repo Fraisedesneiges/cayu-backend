@@ -17,9 +17,22 @@ const parseValuableInformationAlternative = (productInformation) => {
     let productInformationJSON = JSON.parse(productInformation);
     let productInformationFormated = {};
     productInformationFormated = productInformationJSON;
-    productInformationFormated.vegan = isVegan(productInformationJSON);
-    productInformationFormated.vegetarian = isVegetarian(productInformationJSON);
-    productInformationFormated.palmOilFree = isPalmOilFree(productInformationJSON);
+    productInformationFormated.alternativesProducts[0].firstCatego =
+        productInformationJSON.alternativesProducts[0].categories_hierarchy
+            .split('en:')[1]
+            .split(',')[0];
+    productInformationFormated.alternativesProducts[0].vegan = isVegan(productInformationJSON.alternativesProducts[0]);
+    productInformationFormated.alternativesProducts[0].vegetarian = isVegetarian(productInformationJSON.alternativesProducts[0]);
+    productInformationFormated.alternativesProducts[0].palmOilFree =
+        isPalmOilFree(productInformationJSON.alternativesProducts[0]);
+    productInformationFormated.alternativesProducts[1].firstCatego =
+        productInformationJSON.alternativesProducts[1].categories_hierarchy
+            .split('en:')[1]
+            .split(',')[0];
+    productInformationFormated.alternativesProducts[1].vegan = isVegan(productInformationJSON.alternativesProducts[1]);
+    productInformationFormated.alternativesProducts[1].vegetarian = isVegetarian(productInformationJSON.alternativesProducts[1]);
+    productInformationFormated.alternativesProducts[1].palmOilFree =
+        isPalmOilFree(productInformationJSON.alternativesProducts[1]);
     return productInformationFormated;
 };
 exports.parseValuableInformationAlternative = parseValuableInformationAlternative;

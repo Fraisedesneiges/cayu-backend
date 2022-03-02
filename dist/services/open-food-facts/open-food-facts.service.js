@@ -41,15 +41,13 @@ let OpenFoodFactsService = class OpenFoodFactsService {
             throw new common_1.HttpException(err.response.data, err.response.status);
         });
         let productInformationFormated = await (0, open_food_facts_utils_1.parseValuableInformation)(await productInformationReduced);
-        console.log('-----------------------------------' +
-            'UCare back-end has been called and return :' +
-            '\n', productInformationFormated);
+        console.log('-----------------------------------------------------------\n', 'UCare back-end products endpoint has been called and return :', '\n', productInformationFormated, '\n-----------------------------------------------------------');
         return productInformationFormated;
     }
     async getAlternativeProductInformation(category) {
         let alternativeProductInformationReduced = this.http
             .get('https://world.openfoodfacts.org/category/' + category + '.json')
-            .then((response) => '"alternativesProducts":[{"product_id":"' +
+            .then((response) => '{"alternativesProducts":[{"product_id":"' +
             response.data.products[0]._id +
             '", "product_title":"' +
             response.data.products[0].product_name +
@@ -63,8 +61,10 @@ let OpenFoodFactsService = class OpenFoodFactsService {
             response.data.products[0].nova_group +
             '", "ingredients_analysis_tags":"' +
             response.data.products[0].ingredients_analysis_tags +
+            '", "categories_hierarchy":"' +
+            response.data.products[0].categories_hierarchy +
             '"}' +
-            '{"product_id":"' +
+            ',{"product_id":"' +
             response.data.products[1]._id +
             '", "product_title":"' +
             response.data.products[1].product_name +
@@ -78,14 +78,15 @@ let OpenFoodFactsService = class OpenFoodFactsService {
             response.data.products[1].nova_group +
             '", "ingredients_analysis_tags":"' +
             response.data.products[1].ingredients_analysis_tags +
-            '"}')
+            '", "categories_hierarchy":"' +
+            response.data.products[1].categories_hierarchy +
+            '"}]}')
             .catch((err) => {
             throw new common_1.HttpException(err.response.data, err.response.status);
         });
-        console.log('-----------------------------------' +
-            'UCare back-end has been called and return :' +
-            '\n', alternativeProductInformationReduced);
-        return alternativeProductInformationReduced;
+        let alternativeInformationFormated = await (0, open_food_facts_utils_1.parseValuableInformationAlternative)(await alternativeProductInformationReduced);
+        console.log('-----------------------------------------------------------\n', 'UCare back-end category endpoint has been called and return :', '\n', alternativeInformationFormated, '\n-----------------------------------------------------------');
+        return alternativeInformationFormated;
     }
 };
 OpenFoodFactsService = __decorate([
