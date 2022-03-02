@@ -10,9 +10,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('Cayu Backend')
-    .setDescription(
-      'Endpoints of Cayu API'
-    )
+    .setDescription('Endpoints of Cayu API')
     .setVersion('1.2')
     .addTag('products', 'get')
     .addTag('users', 'post')

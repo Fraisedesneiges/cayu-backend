@@ -1,15 +1,18 @@
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 
 export async function hashPassword(password: string) {
-    let saltRounds = 12
-    let salt = await bcrypt.genSalt(saltRounds)
+  const saltRounds = 12;
+  const salt = await bcrypt.genSalt(saltRounds);
 
-    let hashPassword = await bcrypt.hash(password, salt)
+  const hashPassword = await bcrypt.hash(password, salt);
 
-    return hashPassword
+  return hashPassword;
 }
 
-export async function compareHash(sentPassword: string, hashedPassword: string) {
-    let compare = await bcrypt.compare(sentPassword, hashedPassword)
-    return compare
+export async function compareHash(
+  sentPassword: string,
+  hashedPassword: string,
+) {
+  const compare = await bcrypt.compare(sentPassword, hashedPassword);
+  return compare;
 }
