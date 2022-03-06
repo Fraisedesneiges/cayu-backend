@@ -1,5 +1,10 @@
-export declare type User = any;
+import { Repository } from 'typeorm';
+import { User } from './user.entity';
 export declare class UsersService {
-    private readonly users;
-    findOne(username: string): Promise<User | undefined>;
+    private usersRepository;
+    constructor(usersRepository: Repository<User>);
+    createUser(user: User): Promise<User>;
+    findAll(): Promise<User[]>;
+    findOne(mail: string): Promise<User>;
+    remove(mail: string): Promise<void>;
 }

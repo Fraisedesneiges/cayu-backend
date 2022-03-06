@@ -12,16 +12,17 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const products_controller_1 = require("./controllers/products/products.controller");
 const open_food_facts_service_1 = require("./services/open-food-facts/open-food-facts.service");
-const users_controller_1 = require("./controllers/users/users.controller");
+const users_controller_1 = require("./users/users.controller");
 const nestjs_http_promise_1 = require("nestjs-http-promise");
 const auth_module_1 = require("./auth/auth.module");
 const users_module_1 = require("./users/users.module");
 const auth_controller_1 = require("./auth/auth.controller");
+const orm_config_1 = require("./orm.config");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [nestjs_http_promise_1.HttpModule, auth_module_1.AuthModule, users_module_1.UsersModule],
+        imports: [orm_config_1.TypeOrmModuleConfigured, nestjs_http_promise_1.HttpModule, auth_module_1.AuthModule, users_module_1.UsersModule],
         controllers: [app_controller_1.AppController, products_controller_1.ProductsController, users_controller_1.UsersController, auth_controller_1.AuthController],
         providers: [app_service_1.AppService, open_food_facts_service_1.OpenFoodFactsService],
     })
