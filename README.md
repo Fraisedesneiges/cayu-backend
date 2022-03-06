@@ -156,10 +156,16 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Automated API generation
 
-- [ ] Do you have automated documentation generation for your API (such as OpenAPI/Swagger...)? **[1 point]** 🔵
+- ✅ Do you have automated documentation generation for your API (such as OpenAPI/Swagger...)? **[1 point]** 🔵
 
   > _How did you achieve this?
   > You must link your documentation for review (a Github page, a ZIP archive, an attachment to the release notes...)._
+  >
+  > You can find the Swagger there when running the projec : **http://localhost:8080/swagger/**
+
+  <p>
+    <img width="850" height="auto" src="ressource/swagger.png"\>
+  </p>
 
 - [ ] In addition to requireness and types, do you provide a comment for every property of your documentation? **[1 point]**
 
