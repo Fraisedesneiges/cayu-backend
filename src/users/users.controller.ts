@@ -1,5 +1,5 @@
 import { Body, Controller, Get, UseGuards, Post, Request } from '@nestjs/common';
-import { User } from './user.entity';
+import { userDto } from 'src/dto/userDto'; 
 import { UsersService } from './users.service';
 import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 import { ApiTags } from '@nestjs/swagger';
@@ -10,7 +10,7 @@ export class UsersController {
   constructor (private usersService: UsersService) {}
 
   @Post('register')
-  create(@Body() user: User) {
+  create(@Body() user: userDto) {
     let newUser = this.usersService.createUser(user);
     return newUser
       .then(value => {return "User created"})
@@ -25,7 +25,7 @@ export class UsersController {
 
   @UseGuards(JwtAuthGuard)
   @Post('update')
-  update(@Body() user: User){
+  update(@Body() user: userDto){
 
   }
 }

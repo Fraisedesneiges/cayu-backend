@@ -1,4 +1,4 @@
-# UCare Backend
+#  Cayu Backend
 
 ## Installation
 
@@ -33,20 +33,27 @@ $ npm run test:cov
 ```
 
 ## Database
+
 ### Docker Image
+
 Use the official image of Postgres
 https://hub.docker.com/_/postgres
 Check if the variables in `src/orm.config.ts` are the same as the image
 
 ### PgAdmin
+
 You can also use PgAdmin to create a DB: https://www.pgadmin.org/
 
 ## Docker Compose
-Work In Progress: Node modules error in API Image. 
+
+Work In Progress: Node modules error in API Image.
+
 ```
 docker-compose up -d
 ```
-Launch the DB but error might occur on the API. Launch API with: 
+
+Launch the DB but error might occur on the API. Launch API with:
+
 ```
 npm start
 ```
@@ -77,58 +84,64 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 - [✔️] Strictly and deeply validate the type of every input (`params, querystring, body`) at runtime before any processing. **[1 point]** 🔵
 
-  > How did you achieve this?
-  We used to global ValidationPipe() on our NestJs app to ensure some validation inputs. It works thanks to Data Object Models containaing decorators around their attributes
+  > _How did you achieve this?_
+  >
+  > We used the global ValidationPipe() on our NestJs app to ensure some validation inputs. It works thanks to Data Object Models containaing decorators around their attributes. At each request, if the body is specified with a Dto class containings class-validators decorators around the attributes, they will be verified and stop the process if said types / format are not valid.
 
-- [ ] Ensure the type of every input can be inferred by Typescript at any time and properly propagates across the app. **[1 point]** 🔵
+- [✔️] Ensure the type of every input can be inferred by Typescript at any time and properly propagates across the app. **[1 point]** 🔵
 
-  > How did you achieve this?
+  > _How did you achieve this?_
+  We tried to make the best use of Intellisense coupled with typed functions and classes in order to help with the autocompletion and verification during developement.
 
 - [ ] Ensure the static and runtime input types are always synced. **[1 point]** 🔵
-  > How did you achieve this? If extra commands must be run before the typescript checking, how do you ensure there are run?
+  > _How did you achieve this? If extra commands must be run before the typescript checking, how do you ensure there are run?_
 
 ### Authorisation
 
 - [✔️] Check the current user is allowed to call this endpoint. **[1 point]** 🔵
 
-  > How did you achieve this?
+  > _How did you achieve this?_
+  >
   > We made use of Passport strategy pattern using guards around the routes that needs protection. More specifically, we used an AuthGuard that checks if provided credentials matches credentials from a given mail, which then returns a JWT. The protected resources routes contains a JWTGuard which checks if the Bearer has a valid token.
 
 - [✔️] Check the current user is allowed to perform the action on a specific resource. **[1 point]** 🔵
 
-  > How did you achieve this?
-  Unfinished. The JwtGuard can ensure that a JWT is valid, thus blocking the request if unvalid. Our endpoint is not finished but the route we wanted to securize using that pattern was for a Post to modify the username.
+  > _How did you achieve this?_
+  >
+  > Unfinished. The JwtGuard can ensure that a JWT is valid, thus blocking the request if unvalid. Our endpoint is not finished but the route we wanted to securize using that pattern was for a Post to modify the username.
 
 - [✔️] Did you build or use an authorisation framework, making the authorisation widely used in your code base? **[1 point]**
 
-  > How did you achieve this?
+  > _How did you achieve this?_
+  >
   > Like told earlier, we used Passport, a library which provides a logic of Guards and Strategies. Strategies are implemented by the Guards. Strategies provides the logic to validate (reference to the name of the function used to do so in a [name].strategy.ts file) a request. Guards are decorator used around a route to say that said route will implement said strategy.
 
 - [ ] Do you have any way to ensure authorisation is checked on every endpoint? **[1 point]**
+  > _How did you achieve this?_
+  >
   > It is pretty easy to forget authorising some action.
   > For obvious reasons, it may lead to security issues and bugs.
   > At work, we use `varvet/pundit` in our `Ruby on Rails` stack. It can raise exception just before answering the client if authorisation is not checked.
   > https://github.com/varvet/pundit#ensuring-policies-and-scopes-are-used
-  >
-  > How did you achieve this?
 
 ### Secret and configuration management
 
 - [✔️] Use a hash for any sensitive data you do not need to store as plain text. 🔵
 
-  > Also check this if you do not store any password or such data (and say it here).
-  We used bcrypt in order to hash our passwords before saving new users in the DB. The hash verification is compliant with our Guard / Strategy implementations from Passport.
+  > _Also check this if you do not store any password or such data (and say it here)._
+  >
+  > We used bcrypt in order to hash our passwords before saving new users in the DB. The hash verification is compliant with our Guard / Strategy implementations from Passport.
 
 - [ ] Store your configuration entries in environment variables or outside the git scope. **[1 point]** 🔵
 
-  > How did you achieve this?
+  > _How did you achieve this?_
 
 - [ ] Do you provide a way to list every configuration entries (setup instructions, documentation, requireness... are appreciated)? **[1 point]**
 
-  > How did you achieve this?
+  > _How did you achieve this?_
 
 - [ ] Do you have a kind of configuration validation with meaningful error messages? **[1 point]**
-  > How did you achieve this?
+  > _How did you achieve this?_
 
 ### Package management
 
@@ -136,46 +149,47 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 - [ ] Did you write some automated tools that check no unpopular dependency was installed? If yes, ensure it runs frequently. **[1 point]**
 
-  > How did you achieve this? A Github Action (or similar) and compliance rule for pull requests are appreciated.
+  > _How did you achieve this? A Github Action (or similar) and compliance rule for pull requests are appreciated._
 
 - [ ] Properly use dependencies and devDevepencies in your package.json. **[0.5 points]**
-  > How did you achieve this?
+  > _How did you achieve this?_
 
 ### Automated API generation
 
 - [ ] Do you have automated documentation generation for your API (such as OpenAPI/Swagger...)? **[1 point]** 🔵
 
-  > How did you achieve this?
-  > You must link your documentation for review (a Github page, a ZIP archive, an attachment to the release notes...).
+  > _How did you achieve this?
+  > You must link your documentation for review (a Github page, a ZIP archive, an attachment to the release notes...)._
 
 - [ ] In addition to requireness and types, do you provide a comment for every property of your documentation? **[1 point]**
 
-  > How did you achieve this?
+  > _How did you achieve this?_
 
 - [ ] Do you document the schema of responses (at least for success codes) and provide examples of payloads? **[1 point]**
 
-  > How did you achieve this?
+  > _How did you achieve this?_
 
 - [ ] Is your documentation automatically built and published when a commit reach the develop or master branches? **[1 point]**
-  > How did you achieve this?
+  > _How did you achieve this?_
 
 ### Error management
 
 - [ ] Do not expose internal application state or code (no sent stacktrace in production!). **[1 point]** 🔵
 
-  > How did you achieve this?
+  > _How did you achieve this?_
 
 - [ ] Do you report errors to Sentry, Rollbar, Stackdriver… **[1 point]**
-  > How did you achieve this?
+  > _How did you achieve this?_
 
 ### Log management
 
 - [ ] Mention everything you put in place for a better debugging experience based on the logs collection and analysis. **[3 points]**
 
-  > How did you achieve this?
+  > _How did you achieve this?_
 
 - [ ] Mention everything you put in place to ensure no sensitive data were recorded to the log. **[1 point]**
-  > How did you achieve this?
+
+  > _How did you achieve this?_
 
 ### Asynchronous first
 
@@ -188,8 +202,8 @@ In your explanation, please provide links (file + line) to relevant parts of you
   > - We used `async validate(payload: any)` in file `src\auth\jwt.strategy.ts` instead of simple sync validate function.
   > - We used `async getProductInformation(id)` in file `src\services\open-food-facts\open-food-facts.service.ts:14` instead of sync function.
   > - We used `async () => {await expect(service.getProductInformation(...)).toBeDefined();}` in all of our test file `src\services\open-food-facts\open-food-facts.service.spec.ts:22` instead of regular test function.
-  > We used Promise based functions from TypeORM in `src/users/users.service.ts`, with handling in `src/users/users.controller.ts`
-  > 
+  >   We used Promise based functions from TypeORM in `src/users/users.service.ts`, with handling in `src/users/users.controller.ts`
+  >
   > Ex: I used `await fs.readFile` in file `folder/xxx.ts:120` instead of `fs.readFileSync`.
 
 - ✅ No unhandled promise rejections, no uncaught exceptions… **[1 point]** 🔵
