@@ -154,8 +154,8 @@ In your explanation, please provide links (file + line) to relevant parts of you
 > How did you achieve this?
 
 - [X] Eslint rules are checked for any pushed commit to develop or master branch. **[1 point]**
-> Please provide a link to the sample of Github Action logs (or similar).
-> Implement Eslint, and make it run on every pushed and PR on main via Github Action, implement aswell husky to make it run on each commit.
+> <div style="color:green;">Please provide a link to the sample of Github Action logs (or similar).</div>
+> <span style="color:#0080FF; text-decoration: underline;">Eslint configuration</span> : Make it run on every pushed and PR on main via Github Action, implement aswell husky to make it run on each commit.
 
 ### Automated tests
 
