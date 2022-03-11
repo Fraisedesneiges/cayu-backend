@@ -153,8 +153,9 @@ In your explanation, please provide links (file + line) to relevant parts of you
 - [ ] Did you put a focus on reducing code duplication? **[1 point]**
 > How did you achieve this?
 
-- [ ] Eslint rules are checked for any pushed commit to develop or master branch. **[1 point]**
-> Please provide a link to the sample of Github Action logs (or similar).
+- [X] Eslint rules are checked for any pushed commit to develop or master branch. **[1 point]**
+> Please provide a link to the sample of Github Action logs (or similar).<br>
+> Eslint configuration : Make it run on every pushed and PR on main via Github Action, implement aswell husky to make it run on each commit.
 
 ### Automated tests
 
@@ -166,5 +167,3 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 - [ ] Do you run the test on a CD/CI, such as Github Action? **[1 point]**
 > Please provide a link to the latest test summary you have, hosted on Github Action or similar.
-
-
