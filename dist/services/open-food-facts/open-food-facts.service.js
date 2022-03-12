@@ -18,7 +18,7 @@ let OpenFoodFactsService = class OpenFoodFactsService {
         this.http = http;
     }
     async getProductInformation(id) {
-        let productInformationReduced = this.http
+        const productInformationReduced = this.http
             .get('https://world.openfoodfacts.org/api/v0/product/' + id + '.json')
             .then((response) => '{"product_id":"' +
             response.data.product._id +
@@ -40,51 +40,53 @@ let OpenFoodFactsService = class OpenFoodFactsService {
             .catch((err) => {
             throw new common_1.HttpException(err.response.data, err.response.status);
         });
-        let productInformationFormated = await (0, open_food_facts_utils_1.parseValuableInformation)(await productInformationReduced);
+        const productInformationFormated = await (0, open_food_facts_utils_1.parseValuableInformation)(await productInformationReduced);
         console.log('-----------------------------------------------------------\n', 'UCare back-end products endpoint has been called and return :', '\n', productInformationFormated, '\n-----------------------------------------------------------');
         return productInformationFormated;
     }
     async getAlternativeProductInformation(category) {
-        let alternativeProductInformationReduced = this.http
+        const firstRandomIndex = (0, open_food_facts_utils_1.randomIntFromInterval)(0, 10);
+        const secondRandomIndex = firstRandomIndex + (0, open_food_facts_utils_1.randomIntFromInterval)(0, 10);
+        const alternativeProductInformationReduced = this.http
             .get('https://world.openfoodfacts.org/category/' + category + '.json')
             .then((response) => '{"alternativesProducts":[{"product_id":"' +
-            response.data.products[0]._id +
+            response.data.products[firstRandomIndex]._id +
             '", "product_title":"' +
-            response.data.products[0].product_name +
+            response.data.products[firstRandomIndex].product_name +
             '", "product_image":"' +
-            response.data.products[0].image_front_small_url +
+            response.data.products[firstRandomIndex].image_front_small_url +
             '", "nustriscore_grade":"' +
-            response.data.products[0].nutrition_grades +
+            response.data.products[firstRandomIndex].nutrition_grades +
             '", "ecoscore_grade":"' +
-            response.data.products[0].ecoscore_grade +
+            response.data.products[firstRandomIndex].ecoscore_grade +
             '", "nova_group":"' +
-            response.data.products[0].nova_group +
+            response.data.products[firstRandomIndex].nova_group +
             '", "ingredients_analysis_tags":"' +
-            response.data.products[0].ingredients_analysis_tags +
+            response.data.products[firstRandomIndex].ingredients_analysis_tags +
             '", "categories_hierarchy":"' +
-            response.data.products[0].categories_hierarchy +
+            response.data.products[firstRandomIndex].categories_hierarchy +
             '"}' +
             ',{"product_id":"' +
-            response.data.products[1]._id +
+            response.data.products[secondRandomIndex]._id +
             '", "product_title":"' +
-            response.data.products[1].product_name +
+            response.data.products[secondRandomIndex].product_name +
             '", "product_image":"' +
-            response.data.products[1].image_front_small_url +
+            response.data.products[secondRandomIndex].image_front_small_url +
             '", "nustriscore_grade":"' +
-            response.data.products[1].nutrition_grades +
+            response.data.products[secondRandomIndex].nutrition_grades +
             '", "ecoscore_grade":"' +
-            response.data.products[1].ecoscore_grade +
+            response.data.products[secondRandomIndex].ecoscore_grade +
             '", "nova_group":"' +
-            response.data.products[1].nova_group +
+            response.data.products[secondRandomIndex].nova_group +
             '", "ingredients_analysis_tags":"' +
-            response.data.products[1].ingredients_analysis_tags +
+            response.data.products[secondRandomIndex].ingredients_analysis_tags +
             '", "categories_hierarchy":"' +
-            response.data.products[1].categories_hierarchy +
+            response.data.products[secondRandomIndex].categories_hierarchy +
             '"}]}')
             .catch((err) => {
             throw new common_1.HttpException(err.response.data, err.response.status);
         });
-        let alternativeInformationFormated = await (0, open_food_facts_utils_1.parseValuableInformationAlternative)(await alternativeProductInformationReduced);
+        const alternativeInformationFormated = await (0, open_food_facts_utils_1.parseValuableInformationAlternative)(await alternativeProductInformationReduced);
         console.log('-----------------------------------------------------------\n', 'UCare back-end category endpoint has been called and return :', '\n', alternativeInformationFormated, '\n-----------------------------------------------------------');
         return alternativeInformationFormated;
     }

@@ -1,8 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.parseValuableInformationAlternative = exports.parseValuableInformation = void 0;
+exports.parseValuableInformationAlternative = exports.parseValuableInformation = exports.randomIntFromInterval = void 0;
+function randomIntFromInterval(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+exports.randomIntFromInterval = randomIntFromInterval;
 const parseValuableInformation = (productInformation) => {
-    let productInformationJSON = JSON.parse(productInformation);
+    const productInformationJSON = JSON.parse(productInformation);
     let productInformationFormated = {};
     productInformationFormated = productInformationJSON;
     productInformationFormated.firstCatego =
@@ -14,7 +18,7 @@ const parseValuableInformation = (productInformation) => {
 };
 exports.parseValuableInformation = parseValuableInformation;
 const parseValuableInformationAlternative = (productInformation) => {
-    let productInformationJSON = JSON.parse(productInformation);
+    const productInformationJSON = JSON.parse(productInformation);
     let productInformationFormated = {};
     productInformationFormated = productInformationJSON;
     productInformationFormated.alternativesProducts[0].firstCatego =
