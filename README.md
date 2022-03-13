@@ -155,7 +155,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Asynchronous first
 
-- [x] Always use the async implementations when available. **[1 point]** 🔵
+- ✅ Always use the async implementations when available. **[1 point]** 🔵
 
   > _List all the functions you call in their async implementation instead of the sync one._
   >
@@ -166,20 +166,20 @@ In your explanation, please provide links (file + line) to relevant parts of you
   > - We used `async () => {await expect(service.getProductInformation(...)).toBeDefined();}` in all of our test file `src\services\open-food-facts\open-food-facts.service.spec.ts:22` instead of regular test function.
   > - We used await fs.readFile in file folder/xxx.ts:120 instead of fs.readFileSync.
 
-- [x] No unhandled promise rejections, no uncaught exceptions… **[1 point]** 🔵
+- ✅ No unhandled promise rejections, no uncaught exceptions… **[1 point]** 🔵
   > _For example, how do you ensure every promise rejection is caught and properly handled? Tips: one part of the answer could be the use of a linter._
   >
   > There we apply an **Eslint rules** that verify that we got no floating promises : `@typescript-eslint/no-floating-promises': 'error'`. We set it to errors to ensure that we won't bypass it.
 
 ### Code quality
 
-- [x] Did you put a focus on reducing code duplication? **[1 point]**
+- ✅ Did you put a focus on reducing code duplication? **[1 point]**
 
   > _How did you achieve this?_
   >
   > Yes, we try to respect DRY as much as possible. On every services used by our controllers, we extract as many reusibable function in utils file to reuse them as soon as needed.
 
-- [x] Eslint rules are checked for any pushed commit to develop or master branch. **[1 point]**
+- ✅ Eslint rules are checked for any pushed commit to develop or master branch. **[1 point]**
 
   > _Please provide a link to the sample of Github Action logs (or similar)._
   >
@@ -193,7 +193,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Automated tests
 
-- [x] You implemented automated specs. **[1 point]** 🔵
+- ✅ You implemented automated specs. **[1 point]** 🔵
 
   > Please provide a link to the more complete summary you have.
 
@@ -201,7 +201,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
     <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
   </p>
 
-- [x] Your test code coverage is 75% or more. **[1 point]** 🔵
+- ✅ Your test code coverage is 75% or more. **[1 point]** 🔵
 
   > _Please provide a link to the `istanbul` HTML coverage summary (or from a similar tool)._
   >
@@ -212,7 +212,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
     <img width="850" height="auto" src="ressource/GithubActionsTestCoverage.PNG"\>
   </p>
 
-- [x] Do you run the test on a CD/CI, such as Github Action? **[1 point]**
+- ✅ Do you run the test on a CD/CI, such as Github Action? **[1 point]**
 
   > _Please provide a link to the latest test summary you have, hosted on Github Action or similar._
   >
