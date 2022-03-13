@@ -177,7 +177,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
   > On each push to the main branch Eslint is runned, via Github Actions, here is the screen of Github Action logs :
 
   <p>
-    <img width="650" height="auto" src="ressource/GithubActionsLogs.png"\>
+    <img width="650" height="auto" src="ressource/GithubActionsLogs.PNG"\>
   </p>
   > Implement aswell automated Eslint's run and Jest's unit test on each commit via husky.
 
