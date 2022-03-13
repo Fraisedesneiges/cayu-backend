@@ -180,7 +180,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
   > _Please provide a link to the sample of Github Action logs (or similar)._
   >
-  > On each push to the main branch Eslint is runned, via Github Actions, here is the screen of Github Action logs :
+  > On each push to the main branch Eslint is runned, via **[Github Actions](https://github.com/gededev/cayu-backend/blob/main/.github/workflows/main.yml)**, here is the screen of Github Action logs :
 
   <p>
     <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
@@ -202,8 +202,8 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
   > _Please provide a link to the `istanbul` HTML coverage summary (or from a similar tool)._
   >
-  > On each push to the main branch Jest is runned, via Github Actions, and aswell on every local push with **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, here is the screen of the test coverage (80% +
-  > test-coverage), we used istanbul because it was already built in Jest:
+  > On each push to the main branch Jest is runned, via **[Github Actions](https://github.com/gededev/cayu-backend/blob/main/.github/workflows/main.yml)**, and aswell on every local push with **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, here is the screen of the test coverage (80% +
+  > test-coverage), we used **[Istanbul](https://istanbul.js.org/docs/tutorials/jest/)** because it was already built in Jest:
 
   <p>
     <img width="850" height="auto" src="ressource/GithubActionsTestCoverage.PNG"\>
@@ -213,7 +213,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
   > _Please provide a link to the latest test summary you have, hosted on Github Action or similar._
   >
-  > On each push to the main branch Jest is runned, via Github Actions, here is the screen of Github Action logs:
+  > On each push to the main branch Jest is runned, via **[Github Actions](https://github.com/gededev/cayu-backend/blob/main/.github/workflows/main.yml)**, here is the screen of Github Action logs:
 
   <p>
     <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
