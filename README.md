@@ -174,7 +174,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
   > _How did you achieve this?_
   >
-  > Yes, we try to respect DRY as much as possible. On every services used by our controllers we extract as many reusibable function in utils file to reuse them as soon as needed.
+  > Yes, we try to respect DRY as much as possible. On every services used by our controllers, we extract as many reusibable function in utils file to reuse them as soon as needed.
 
 - [x] Eslint rules are checked for any pushed commit to develop or master branch. **[1 point]**
 
