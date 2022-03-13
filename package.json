@@ -91,7 +91,16 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s",
       "!**/*.module.ts",
-      "!**/orm.config.ts"
+      "!**/orm.config.ts",
+      "!**/users",
+      "!**/users.controller.ts",
+      "!**/users.service.ts",
+      "!**/main.ts",
+      "!**/auth.service.ts",
+      "!**/constants.ts",
+      "!**/jwt.strategy.ts",
+      "!**/local.strategy.ts",
+      "!**/open-food-facts.utils.ts"
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
