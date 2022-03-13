@@ -195,7 +195,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 - [x] Your test code coverage is 75% or more. **[1 point]** 🔵
 
   > Please provide a link to the `istanbul` HTML coverage summary (or from a similar tool).<br>
-  > On each push to the main branch Jest is runned, via Github Actions, here is the screen of Github Action logs:
+  > On each push to the main branch Jest is runned, via Github Actions, and aswell on every local push with **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, here is the screen of the test coverage, we used istanbul because it was already built in Jest:
 
   <p>
     <img width="850" height="auto" src="ressource/GithubActionsTestCoverage.PNG"\>
@@ -210,4 +210,4 @@ In your explanation, please provide links (file + line) to relevant parts of you
     <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
   </p>
 
-  > As for Eslint, we implemented aswell automated Jest's unit test on each **push** on all branch via **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, the goal here is to ensure that each dev of the team don't create side effects and implement breaking change without slowing their dev process on each commit.
+  > As for for Eslint, we implemented aswell automated Jest's unit test on each **push** on all branch via **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, the goal here is to ensure that each dev of the team don't create side effects and implement breaking change without slowing their dev process on each commit.
