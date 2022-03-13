@@ -179,7 +179,8 @@ In your explanation, please provide links (file + line) to relevant parts of you
   <p>
     <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
   </p>
-  > Implement aswell automated Eslint's run and Jest's unit test on each commit via husky.
+
+  > Implement aswell automated Eslint's run and Jest's unit test on each commit on all branch via husky to ensure that each dev of the team respect our coding rules and avoid side effects with their new commit.
 
 ### Automated tests
 
