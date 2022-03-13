@@ -166,7 +166,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 - [x] No unhandled promise rejections, no uncaught exceptions… **[1 point]** 🔵
   > _For example, how do you ensure every promise rejection is caught and properly handled? Tips: one part of the answer could be the use of a linter._
   >
-  > Coming soon
+  > There we apply an **Eslint rules** that verify that we got no floating promises : `@typescript-eslint/no-floating-promises': 'error'`. We set it to errors to ensure that we won't bypass it.
 
 ### Code quality
 
