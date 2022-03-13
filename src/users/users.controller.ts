@@ -1,17 +1,31 @@
-import { Body, Controller, Get, Post, Request } from '@nestjs/common';
+import { Body, Controller, Get, UseGuards, Post, Request } from '@nestjs/common';
 import { User } from './user.entity';
 import { UsersService } from './users.service';
+import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
-@Controller('users')
+@ApiTags('user')
+@Controller('user')
 export class UsersController {
-  constructor(private usersService: UsersService) {}
-  @Post('/register')
+  constructor (private usersService: UsersService) {}
+
+  @Post('register')
   create(@Body() user: User) {
-    return this.usersService.createUser(user);
+    let newUser = this.usersService.createUser(user);
+    return newUser
+      .then(value => {return "User created"})
+      .catch(err => {return "Register failed"})
   }
 
-  @Get('/user')
-  test(@Request() req) {
-    return this.usersService.findUserByMail(req.mail);
+  @UseGuards(JwtAuthGuard)
+  @Get('profile')
+  getProfile(@Request() req) {
+    return this.usersService.getProfile(req.body["userId"]);
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Post('update')
+  update(@Body() user: User){
+
   }
 }

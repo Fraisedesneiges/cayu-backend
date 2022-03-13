@@ -32,6 +32,14 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Database
+Use the official image of Postgres
+https://hub.docker.com/_/postgres
+Check if the variables in `src/orm.config.ts` are the same as the image
+
+## Docker Compose
+Work In Progress: Node modules error in API Image
+
 # Checkpoints report for the project
 
 You **MUST** append a filled copy of this document at the end of your `README.MD`.
@@ -56,9 +64,10 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Input validation
 
-- [ ] Strictly and deeply validate the type of every input (`params, querystring, body`) at runtime before any processing. **[1 point]** 🔵
+- [✔️] Strictly and deeply validate the type of every input (`params, querystring, body`) at runtime before any processing. **[1 point]** 🔵
 
   > How did you achieve this?
+  We used to global ValidationPipe() on our NestJs app to ensure some validation inputs. It works thanks to Data Object Models containaing decorators around their attributes
 
 - [ ] Ensure the type of every input can be inferred by Typescript at any time and properly propagates across the app. **[1 point]** 🔵
 
@@ -69,17 +78,20 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Authorisation
 
-- [ ] Check the current user is allowed to call this endpoint. **[1 point]** 🔵
+- [✔️] Check the current user is allowed to call this endpoint. **[1 point]** 🔵
 
   > How did you achieve this?
+  > We made use of Passport strategy pattern using guards around the routes that needs protection. More specifically, we used an AuthGuard that checks if provided credentials matches credentials from a given mail, which then returns a JWT. The protected resources routes contains a JWTGuard which checks if the Bearer has a valid token.
 
-- [ ] Check the current user is allowed to perform the action on a specific resource. **[1 point]** 🔵
-
-  > How did you achieve this?
-
-- [ ] Did you build or use an authorisation framework, making the authorisation widely used in your code base? **[1 point]**
+- [✔️] Check the current user is allowed to perform the action on a specific resource. **[1 point]** 🔵
 
   > How did you achieve this?
+  Unfinished. The JwtGuard can ensure that a JWT is valid, thus blocking the request if unvalid. Our endpoint is not finished but the route we wanted to securize using that pattern was for a Post to modify the username.
+
+- [✔️] Did you build or use an authorisation framework, making the authorisation widely used in your code base? **[1 point]**
+
+  > How did you achieve this?
+  > Like told earlier, we used Passport, a library which provides a logic of Guards and Strategies. Strategies are implemented by the Guards. Strategies provides the logic to validate (reference to the name of the function used to do so in a [name].strategy.ts file) a request. Guards are decorator used around a route to say that said route will implement said strategy.
 
 - [ ] Do you have any way to ensure authorisation is checked on every endpoint? **[1 point]**
   > It is pretty easy to forget authorising some action.
@@ -91,9 +103,10 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Secret and configuration management
 
-- [ ] Use a hash for any sensitive data you do not need to store as plain text. 🔵
+- [✔️] Use a hash for any sensitive data you do not need to store as plain text. 🔵
 
   > Also check this if you do not store any password or such data (and say it here).
+  We used bcrypt in order to hash our passwords before saving new users in the DB. The hash verification is compliant with our Guard / Strategy implementations from Passport.
 
 - [ ] Store your configuration entries in environment variables or outside the git scope. **[1 point]** 🔵
 
@@ -108,7 +121,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Package management
 
-- [ ] Do not use any package with less than 50k downloads a week. 🔵
+- [✔️] Do not use any package with less than 50k downloads a week. 🔵
 
 - [ ] Did you write some automated tools that check no unpopular dependency was installed? If yes, ensure it runs frequently. **[1 point]**
 
@@ -164,6 +177,9 @@ In your explanation, please provide links (file + line) to relevant parts of you
   > - We used `async validate(payload: any)` in file `src\auth\jwt.strategy.ts` instead of simple sync validate function.
   > - We used `async getProductInformation(id)` in file `src\services\open-food-facts\open-food-facts.service.ts:14` instead of sync function.
   > - We used `async () => {await expect(service.getProductInformation(...)).toBeDefined();}` in all of our test file `src\services\open-food-facts\open-food-facts.service.spec.ts:22` instead of regular test function.
+  > We used Promise based functions from TypeORM in `src/users/users.service.ts`, with handling in `src/users/users.controller.ts`
+  > 
+  > Ex: I used `await fs.readFile` in file `folder/xxx.ts:120` instead of `fs.readFileSync`.
 
 - ✅ No unhandled promise rejections, no uncaught exceptions… **[1 point]** 🔵
   > _For example, how do you ensure every promise rejection is caught and properly handled? Tips: one part of the answer could be the use of a linter._
