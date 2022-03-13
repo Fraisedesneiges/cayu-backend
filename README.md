@@ -1,5 +1,4 @@
 # UCare Backend
-
 ## Installation
 
 ```bash
@@ -37,7 +36,6 @@ $ npm run test:cov
 You **MUST** append a filled copy of this document at the end of your `README.MD`.
 
 This document serves three main purposes:
-
 - providing you a clear list of my expectations (check each point when done) ;
 - ensuring I do not miss some of your engineering during the review ;
 - asking for additional information that helps me during the review.
