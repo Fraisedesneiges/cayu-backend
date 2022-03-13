@@ -192,9 +192,14 @@ In your explanation, please provide links (file + line) to relevant parts of you
     <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
   </p>
 
-- [ ] Your test code coverage is 75% or more. **[1 point]** 🔵
+- [x] Your test code coverage is 75% or more. **[1 point]** 🔵
 
-  > Please provide a link to the `istanbul` HTML coverage summary (or from a similar tool).
+  > Please provide a link to the `istanbul` HTML coverage summary (or from a similar tool).<br>
+  > On each push to the main branch Jest is runned, via Github Actions, here is the screen of Github Action logs:
+
+  <p>
+    <img width="850" height="auto" src="ressource/GithubActionsTestCoverage.PNG"\>
+  </p>
 
 - [x] Do you run the test on a CD/CI, such as Github Action? **[1 point]**
 
