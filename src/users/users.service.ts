@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './user.entity';
+import { hashPassword } from 'src/auth/hash';
 
 @Injectable()
 export class UsersService {
@@ -10,16 +11,14 @@ export class UsersService {
     private usersRepository: Repository<User>,
   ) {}
 
-  createUser(user: User) {
-    return this.usersRepository.save(user)
+  async createUser(user: User) {
+    let hashedPassword = await hashPassword(user.password)
+    let securedUser = {...user, password: hashedPassword}
+    return this.usersRepository.save(securedUser);
   }
 
   findAll(): Promise<User[]> {
     return this.usersRepository.find();
-  }
-
-  findOne(userId: number): Promise<User>{
-    return this.usersRepository.findOne(userId)
   }
 
   findUserByMail(mail: string): Promise<User> {
@@ -30,5 +29,10 @@ export class UsersService {
 
   async remove(mail: string): Promise<void> {
     await this.usersRepository.delete(mail);
+  }
+
+  async getProfile(id: number){
+    const {password, userId, ...profile} = await this.usersRepository.findOne(id)
+    return profile
   }
 }

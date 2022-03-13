@@ -31,6 +31,14 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+## Database
+Use the official image of Postgres
+https://hub.docker.com/_/postgres
+Check if the variables in `src/orm.config.ts` are the same as the image
+
+## Docker Compose
+Work In Progress: Node modules error in API Image
+
 # Checkpoints report for the project
 
 You **MUST** append a filled copy of this document at the end of your `README.MD`.
@@ -54,9 +62,10 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Input validation
 
-- [ ] Strictly and deeply validate the type of every input (`params, querystring, body`) at runtime before any processing. **[1 point]** 🔵
+- [✔️] Strictly and deeply validate the type of every input (`params, querystring, body`) at runtime before any processing. **[1 point]** 🔵
 
   > How did you achieve this?
+  We used to global ValidationPipe() on our NestJs app to ensure some validation inputs. It works thanks to Data Object Models containaing decorators around their attributes
 
 - [ ] Ensure the type of every input can be inferred by Typescript at any time and properly propagates across the app. **[1 point]** 🔵
 
@@ -67,17 +76,20 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Authorisation
 
-- [ ] Check the current user is allowed to call this endpoint. **[1 point]** 🔵
+- [✔️] Check the current user is allowed to call this endpoint. **[1 point]** 🔵
 
   > How did you achieve this?
+  > We made use of Passport strategy pattern using guards around the routes that needs protection. More specifically, we used an AuthGuard that checks if provided credentials matches credentials from a given mail, which then returns a JWT. The protected resources routes contains a JWTGuard which checks if the Bearer has a valid token.
 
-- [ ] Check the current user is allowed to perform the action on a specific resource. **[1 point]** 🔵
-
-  > How did you achieve this?
-
-- [ ] Did you build or use an authorisation framework, making the authorisation widely used in your code base? **[1 point]**
+- [✔️] Check the current user is allowed to perform the action on a specific resource. **[1 point]** 🔵
 
   > How did you achieve this?
+  Unfinished. The JwtGuard can ensure that a JWT is valid, thus blocking the request if unvalid. Our endpoint is not finished but the route we wanted to securize using that pattern was for a Post to modify the username.
+
+- [✔️] Did you build or use an authorisation framework, making the authorisation widely used in your code base? **[1 point]**
+
+  > How did you achieve this?
+  > Like told earlier, we used Passport, a library which provides a logic of Guards and Strategies. Strategies are implemented by the Guards. Strategies provides the logic to validate (reference to the name of the function used to do so in a [name].strategy.ts file) a request. Guards are decorator used around a route to say that said route will implement said strategy.
 
 - [ ] Do you have any way to ensure authorisation is checked on every endpoint? **[1 point]**
   > It is pretty easy to forget authorising some action.
@@ -89,9 +101,10 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Secret and configuration management
 
-- [ ] Use a hash for any sensitive data you do not need to store as plain text. 🔵
+- [✔️] Use a hash for any sensitive data you do not need to store as plain text. 🔵
 
   > Also check this if you do not store any password or such data (and say it here).
+  We used bcrypt in order to hash our passwords before saving new users in the DB. The hash verification is compliant with our Guard / Strategy implementations from Passport.
 
 - [ ] Store your configuration entries in environment variables or outside the git scope. **[1 point]** 🔵
 
@@ -106,7 +119,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Package management
 
-- [ ] Do not use any package with less than 50k downloads a week. 🔵
+- [✔️] Do not use any package with less than 50k downloads a week. 🔵
 
 - [ ] Did you write some automated tools that check no unpopular dependency was installed? If yes, ensure it runs frequently. **[1 point]**
 
@@ -153,10 +166,12 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Asynchronous first
 
-- [ ] Always use the async implementations when available. **[1 point]** 🔵
+- [✔️] Always use the async implementations when available. **[1 point]** 🔵
 
   > List all the functions you call in their async implementation instead of the sync one.
-  >
+  > We used bcrypt async functions in the file `src/auth/hash.ts`
+  > We used Promise based functions from TypeORM in `src/users/users.service.ts`, with handling in `src/users/users.controller.ts`
+  > 
   > Ex: I used `await fs.readFile` in file `folder/xxx.ts:120` instead of `fs.readFileSync`.
 
 - [ ] No unhandled promise rejections, no uncaught exceptions… **[1 point]** 🔵
@@ -165,11 +180,12 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Code quality
 
-- [ ] Did you put a focus on reducing code duplication? **[1 point]**
+- [✔️] Did you put a focus on reducing code duplication? **[1 point]**
 
   > How did you achieve this?
+  > We actively used NestJs guidelines and architecture to generate the files we only needed. We also made sure to put in separate files logic we used in different. We also made sure to read the code of each other in order to peer review ourselves a bit to ensure we don't repeat ourselves.
 
-- [x] Eslint rules are checked for any pushed commit to develop or master branch. **[1 point]**
+- [✔️] Eslint rules are checked for any pushed commit to develop or master branch. **[1 point]**
 
   > Please provide a link to the sample of Github Action logs (or similar).<br>
   > On each push to the main branch Eslint is runned, via Github Actions, here is the screen of Github Action logs :
