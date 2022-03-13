@@ -6,7 +6,7 @@ import { ApiTags } from '@nestjs/swagger';
 @ApiTags('category')
 @Controller('category')
 export class CategoryController {
-  constructor(private openFoodFactsService: OpenFoodFactsService) { }
+  constructor(private openFoodFactsService: OpenFoodFactsService) {}
 
   @Get(':category')
   getAlternativeProducts(@Param('category') category: string) {

@@ -6,7 +6,7 @@ import { ApiTags } from '@nestjs/swagger';
 @ApiTags('products')
 @Controller('products')
 export class ProductsController {
-  constructor(private openFoodFactsService: OpenFoodFactsService) { }
+  constructor(private openFoodFactsService: OpenFoodFactsService) {}
 
   @Get(':id')
   getSpecifcProducts(@Param('id') id: number) {

@@ -194,11 +194,11 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 - [ ] Do you run the test on a CD/CI, such as Github Action? **[1 point]**
 
-  > Please provide a link to the latest test summary you have, hosted on Github Action or similar.
-
-  > On each push to the main branch Jest is runned, via Github Actions, here is the screen of Github Action logs :
+  > Please provide a link to the latest test summary you have, hosted on Github Action or similar. <br>
+  > On each push to the main branch Jest is runned, via Github Actions, here is the screen of Github Action logs:
 
   <p>
     <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
   </p>
+
   > As for Eslint, we implemented aswell automated Jest's unit test on each **push** on all branch via **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, the goal here is to ensure that each dev of the team don't create side effects and implement breaking change without slowing their dev process on each commit.

@@ -13,7 +13,13 @@ import { TypeOrmModuleConfigured } from './orm.config';
 
 @Module({
   imports: [TypeOrmModuleConfigured, HttpModule, AuthModule, UsersModule],
-  controllers: [AppController, ProductsController, UsersController, AuthController, CategoryController],
+  controllers: [
+    AppController,
+    ProductsController,
+    UsersController,
+    AuthController,
+    CategoryController,
+  ],
   providers: [AppService, OpenFoodFactsService],
 })
 export class AppModule {}

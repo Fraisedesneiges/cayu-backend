@@ -11,21 +11,19 @@ export class UsersService {
   ) {}
 
   createUser(user: User) {
-    return this.usersRepository.save(user)
+    return this.usersRepository.save(user);
   }
 
   findAll(): Promise<User[]> {
     return this.usersRepository.find();
   }
 
-  findOne(userId: number): Promise<User>{
-    return this.usersRepository.findOne(userId)
+  findOne(userId: number): Promise<User> {
+    return this.usersRepository.findOne(userId);
   }
 
   findUserByMail(mail: string): Promise<User> {
-    return this.usersRepository.findOne({ where:
-      { mail: mail }
-  });
+    return this.usersRepository.findOne({ where: { mail: mail } });
   }
 
   async remove(mail: string): Promise<void> {

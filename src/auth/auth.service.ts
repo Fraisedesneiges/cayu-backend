@@ -6,12 +6,12 @@ import { JwtService } from '@nestjs/jwt';
 export class AuthService {
   constructor(
     private usersService: UsersService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
   ) {}
 
   async validateUser(mail: string, password: string): Promise<any> {
     const user = await this.usersService.findUserByMail(mail);
-    if (user && (user.password === password)) {
+    if (user && user.password === password) {
       const { password, ...result } = user;
       return result;
     }
@@ -25,8 +25,8 @@ export class AuthService {
     };
   }
 
-  async getProfile(userId: number){
-    const {password, ...profile} = await this.usersService.findOne(userId)
-    return profile
+  async getProfile(userId: number) {
+    const { password, ...profile } = await this.usersService.findOne(userId);
+    return profile;
   }
 }
