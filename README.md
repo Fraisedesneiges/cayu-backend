@@ -155,21 +155,22 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Asynchronous first
 
-- [ ] Always use the async implementations when available. **[1 point]** 🔵
+- [x] Always use the async implementations when available. **[1 point]** 🔵
 
   > List all the functions you call in their async implementation instead of the sync one.
   >
-  > Ex: I used `await fs.readFile` in file `folder/xxx.ts:120` instead of `fs.readFileSync`.
+  > Ex: I used `await fs.readFile` in file `folder/xxx.ts:120` instead of `fs.readFileSync`.<br>
 
-- [ ] No unhandled promise rejections, no uncaught exceptions… **[1 point]** 🔵
+- [x] No unhandled promise rejections, no uncaught exceptions… **[1 point]** 🔵
   > For example, how do you ensure every promise rejection is caught and properly handled?
-  > Tips: one part of the answer could be the use of a linter.
+  > Tips: one part of the answer could be the use of a linter.<br>
 
 ### Code quality
 
-- [ ] Did you put a focus on reducing code duplication? **[1 point]**
+- [x] Did you put a focus on reducing code duplication? **[1 point]**
 
-  > How did you achieve this?
+  > How did you achieve this?<br>
+  > Yes, we try to respect DRY as much as possible. On every services used by our controllers we extract as many reusibable function in utils file to reuse them as soon as needed.
 
 - [x] Eslint rules are checked for any pushed commit to develop or master branch. **[1 point]**
 
@@ -195,7 +196,8 @@ In your explanation, please provide links (file + line) to relevant parts of you
 - [x] Your test code coverage is 75% or more. **[1 point]** 🔵
 
   > Please provide a link to the `istanbul` HTML coverage summary (or from a similar tool).<br>
-  > On each push to the main branch Jest is runned, via Github Actions, and aswell on every local push with **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, here is the screen of the test coverage, we used istanbul because it was already built in Jest:
+  > On each push to the main branch Jest is runned, via Github Actions, and aswell on every local push with **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, here is the screen of the test coverage (80% +
+  > test-coverage), we used istanbul because it was already built in Jest:
 
   <p>
     <img width="850" height="auto" src="ressource/GithubActionsTestCoverage.PNG"\>
@@ -210,4 +212,4 @@ In your explanation, please provide links (file + line) to relevant parts of you
     <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
   </p>
 
-  > As for for Eslint, we implemented aswell automated Jest's unit test on each **push** on all branch via **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, the goal here is to ensure that each dev of the team don't create side effects and implement breaking change without slowing their dev process on each commit.
+  > As said before, we implemented aswell automated Jest's unit test on each **push** on all branch via **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, the goal here is to ensure that each dev of the team don't create side effects and implement breaking change without slowing them too much (you can skip test with --no-verify in your push command)
