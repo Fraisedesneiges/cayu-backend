@@ -161,7 +161,10 @@ In your explanation, please provide links (file + line) to relevant parts of you
   >
   > _Ex: I used `await fs.readFile` in file `folder/xxx.ts:120` instead of `fs.readFileSync`._
   >
-  > Coming soon
+  > - We used await fs.readFile in file folder/xxx.ts:120 instead of fs.readFileSync.
+  > - We used await fs.readFile in file folder/xxx.ts:120 instead of fs.readFileSync.
+  > - We used `async () => {await expect(service.getProductInformation(...)).toBeDefined();}` in all of our test file `src\services\open-food-facts\open-food-facts.service.spec.ts:22` instead of regular test function.
+  > - We used await fs.readFile in file folder/xxx.ts:120 instead of fs.readFileSync.
 
 - [x] No unhandled promise rejections, no uncaught exceptions… **[1 point]** 🔵
   > _For example, how do you ensure every promise rejection is caught and properly handled? Tips: one part of the answer could be the use of a linter._
