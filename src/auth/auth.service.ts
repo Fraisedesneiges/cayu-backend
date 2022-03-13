@@ -26,13 +26,4 @@ export class AuthService {
       access_token: this.jwtService.sign(payload),
     };
   }
-<<<<<<< HEAD
-
-  async getProfile(userId: number) {
-    const { password, ...profile } = await this.usersService.findOne(userId);
-    return profile;
-  }
 }
-=======
-}
->>>>>>> feature/secret_config_db
