@@ -186,7 +186,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
   > On each push to the main branch Eslint is runned, via **[Github Actions](https://github.com/gededev/cayu-backend/blob/main/.github/workflows/main.yml)**, here is the screen of Github Action logs :
 
   <p>
-    <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
+    <img width="850" height="auto" src="ressource/GithubActionsEslintLogs.png"\>
   </p>
 
   > Implemented aswell automated Eslint's runs on each commit on all branch via **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, the goal here is to ensure that each dev of the team respect the coding rules at each commit.
@@ -198,7 +198,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
   > Please provide a link to the more complete summary you have.
 
   <p>
-    <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
+    <img width="850" height="auto" src="ressource/GithubActionsJestLogs.png"\>
   </p>
 
 - ✅ Your test code coverage is 75% or more. **[1 point]** 🔵
