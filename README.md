@@ -157,24 +157,29 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 - [x] Always use the async implementations when available. **[1 point]** 🔵
 
-  > List all the functions you call in their async implementation instead of the sync one.
+  > _List all the functions you call in their async implementation instead of the sync one._
   >
-  > Ex: I used `await fs.readFile` in file `folder/xxx.ts:120` instead of `fs.readFileSync`.<br>
+  > _Ex: I used `await fs.readFile` in file `folder/xxx.ts:120` instead of `fs.readFileSync`._
+  >
+  > Coming soon
 
 - [x] No unhandled promise rejections, no uncaught exceptions… **[1 point]** 🔵
-  > For example, how do you ensure every promise rejection is caught and properly handled?
-  > Tips: one part of the answer could be the use of a linter.<br>
+  > _For example, how do you ensure every promise rejection is caught and properly handled? Tips: one part of the answer could be the use of a linter._
+  >
+  > Coming soon
 
 ### Code quality
 
 - [x] Did you put a focus on reducing code duplication? **[1 point]**
 
-  > How did you achieve this?<br>
+  > _How did you achieve this?_
+  >
   > Yes, we try to respect DRY as much as possible. On every services used by our controllers we extract as many reusibable function in utils file to reuse them as soon as needed.
 
 - [x] Eslint rules are checked for any pushed commit to develop or master branch. **[1 point]**
 
-  > Please provide a link to the sample of Github Action logs (or similar).<br>
+  > _Please provide a link to the sample of Github Action logs (or similar)._
+  >
   > On each push to the main branch Eslint is runned, via Github Actions, here is the screen of Github Action logs :
 
   <p>
@@ -195,7 +200,8 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 - [x] Your test code coverage is 75% or more. **[1 point]** 🔵
 
-  > Please provide a link to the `istanbul` HTML coverage summary (or from a similar tool).<br>
+  > _Please provide a link to the `istanbul` HTML coverage summary (or from a similar tool)._
+  >
   > On each push to the main branch Jest is runned, via Github Actions, and aswell on every local push with **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, here is the screen of the test coverage (80% +
   > test-coverage), we used istanbul because it was already built in Jest:
 
@@ -205,7 +211,8 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 - [x] Do you run the test on a CD/CI, such as Github Action? **[1 point]**
 
-  > Please provide a link to the latest test summary you have, hosted on Github Action or similar. <br>
+  > _Please provide a link to the latest test summary you have, hosted on Github Action or similar._
+  >
   > On each push to the main branch Jest is runned, via Github Actions, here is the screen of Github Action logs:
 
   <p>
