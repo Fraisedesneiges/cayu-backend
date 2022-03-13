@@ -195,10 +195,12 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 - ✅ You implemented automated specs. **[1 point]** 🔵
 
-  > Please provide a link to the more complete summary you have.
+  > _Please provide a link to the more complete summary you have._
+  >
+  > Here is the last and more complete summary we have : **[Jest summary Link](https://github.com/gededev/cayu-backend/runs/5530168825?check_suite_focus=true)**
 
   <p>
-    <img width="850" height="auto" src="ressource/GithubActionsJestLogs.png"\>
+    <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
   </p>
 
 - ✅ Your test code coverage is 75% or more. **[1 point]** 🔵
@@ -216,10 +218,10 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
   > _Please provide a link to the latest test summary you have, hosted on Github Action or similar._
   >
-  > On each push to the main branch Jest is runned, via **[Github Actions](https://github.com/gededev/cayu-backend/blob/main/.github/workflows/main.yml)**, here is the screen of Github Action logs:
+  > On each push to the main branch Jest is runned, via **[Github Actions](https://github.com/gededev/cayu-backend/blob/main/.github/workflows/main.yml)**, here is the screen of Github Action logs, or you can get with this **[link](https://github.com/gededev/cayu-backend/actions/runs/1977708193)**:
 
   <p>
-    <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
+    <img width="850" height="auto" src="ressource/GithubActionsJestLogs.png"\>
   </p>
 
   > As said before, we implemented aswell automated Jest's unit test on each **push** on all branch via **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, the goal here is to ensure that each dev of the team don't create side effects and implement breaking change without slowing them too much (you can skip test with --no-verify in your push command)
