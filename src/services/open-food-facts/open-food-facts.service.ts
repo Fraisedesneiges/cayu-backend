@@ -1,5 +1,4 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { HttpService } from 'nestjs-http-promise';
 import { productFormated } from './interfaces/productResponse.interface';
 import { alternativeFormated } from './interfaces/alternativeResponse.interface';
 import {
@@ -7,12 +6,13 @@ import {
   parseValuableInformationAlternative,
   randomIntFromInterval,
 } from './open-food-facts.utils';
+import { HttpService } from 'nestjs-http-promise';
 
 @Injectable()
 export class OpenFoodFactsService {
-  constructor(private http: HttpService) {}
+  constructor(private httpService: HttpService) {}
   async getProductInformation(id): Promise<productFormated> {
-    const productInformationReduced = this.http
+    const productInformationReduced = this.httpService
       .get('https://world.openfoodfacts.org/api/v0/product/' + id + '.json')
       .then(
         (response): string =>
@@ -42,13 +42,14 @@ export class OpenFoodFactsService {
       await productInformationReduced,
     );
 
+    /*
     console.log(
       '-----------------------------------------------------------\n',
       'UCare back-end products endpoint has been called and return :',
       '\n',
       productInformationFormated,
       '\n-----------------------------------------------------------',
-    );
+    );*/
 
     return productInformationFormated;
   }
@@ -58,7 +59,7 @@ export class OpenFoodFactsService {
   ): Promise<alternativeFormated> {
     const firstRandomIndex = randomIntFromInterval(0, 10);
     const secondRandomIndex = firstRandomIndex + randomIntFromInterval(0, 10);
-    const alternativeProductInformationReduced = this.http
+    const alternativeProductInformationReduced = this.httpService
       .get('https://world.openfoodfacts.org/category/' + category + '.json')
       .then(
         (response): string =>
@@ -105,14 +106,14 @@ export class OpenFoodFactsService {
       await parseValuableInformationAlternative(
         await alternativeProductInformationReduced,
       );
-
+    /*
     console.log(
       '-----------------------------------------------------------\n',
       'UCare back-end category endpoint has been called and return :',
       '\n',
       alternativeInformationFormated,
       '\n-----------------------------------------------------------',
-    );
+    );*/
 
     return alternativeInformationFormated;
   }
