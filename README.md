@@ -180,7 +180,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
     <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
   </p>
 
-  > Implement aswell automated Eslint's run and Jest's unit test on each commit on all branch via husky to ensure that each dev of the team respect our coding rules and avoid side effects with their new commit.
+  > Implement aswell automated Eslint's runs and Jest's unit testing runs on each commit on all branch via **[Husky 🐶](https://typicode.github.io/husky/#/?id=automatic-recommended)**, the goal here is to ensure that each dev of the team respect the coding rules and avoid side effects with their new commit.
 
 ### Automated tests
 
