@@ -33,12 +33,23 @@ $ npm run test:cov
 ```
 
 ## Database
+### Docker Image
 Use the official image of Postgres
 https://hub.docker.com/_/postgres
 Check if the variables in `src/orm.config.ts` are the same as the image
 
+### PgAdmin
+You can also use PgAdmin to create a DB: https://www.pgadmin.org/
+
 ## Docker Compose
-Work In Progress: Node modules error in API Image
+Work In Progress: Node modules error in API Image. 
+```
+docker-compose up -d
+```
+Launch the DB but error might occur on the API. Launch API with: 
+```
+npm start
+```
 
 # Checkpoints report for the project
 
