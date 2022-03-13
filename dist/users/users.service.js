@@ -27,8 +27,12 @@ let UsersService = class UsersService {
     findAll() {
         return this.usersRepository.find();
     }
-    findOne(mail) {
-        return this.usersRepository.findOne(mail);
+    findOne(userId) {
+        return this.usersRepository.findOne(userId);
+    }
+    findUserByMail(mail) {
+        return this.usersRepository.findOne({ where: { mail: mail }
+        });
     }
     async remove(mail) {
         await this.usersRepository.delete(mail);

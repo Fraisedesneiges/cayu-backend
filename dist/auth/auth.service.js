@@ -29,19 +29,23 @@ let AuthService = class AuthService {
         this.usersService = usersService;
         this.jwtService = jwtService;
     }
-    async validateUser(username, pass) {
-        const user = await this.usersService.findOne(username);
-        if (user && user.password === pass) {
+    async validateUser(mail, password) {
+        const user = await this.usersService.findUserByMail(mail);
+        if (user && (user.password === password)) {
             const { password } = user, result = __rest(user, ["password"]);
             return result;
         }
         return null;
     }
     async login(user) {
-        const payload = { username: user.username, sub: user.userId };
+        const payload = { mail: user.mail, sub: user.userId };
         return {
             access_token: this.jwtService.sign(payload),
         };
+    }
+    async getProfile(userId) {
+        const _a = await this.usersService.findOne(userId), { password } = _a, profile = __rest(_a, ["password"]);
+        return profile;
     }
 };
 AuthService = __decorate([

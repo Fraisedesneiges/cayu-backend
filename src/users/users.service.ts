@@ -18,8 +18,14 @@ export class UsersService {
     return this.usersRepository.find();
   }
 
-  findOne(mail: string): Promise<User> {
-    return this.usersRepository.findOne(mail);
+  findOne(userId: number): Promise<User>{
+    return this.usersRepository.findOne(userId)
+  }
+
+  findUserByMail(mail: string): Promise<User> {
+    return this.usersRepository.findOne({ where:
+      { mail: mail }
+  });
   }
 
   async remove(mail: string): Promise<void> {

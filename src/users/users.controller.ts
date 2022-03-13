@@ -12,6 +12,6 @@ export class UsersController {
 
   @Get('/user')
   test(@Request() req){
-    return this.usersService.findOne(req.mail)
+    return this.usersService.findUserByMail(req.mail)
   }
 }

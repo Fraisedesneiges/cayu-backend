@@ -24,7 +24,7 @@ let UsersController = class UsersController {
         return this.usersService.createUser(user);
     }
     test(req) {
-        return this.usersService.findOne(req.mail);
+        return this.usersService.findUserByMail(req.mail);
     }
 };
 __decorate([
