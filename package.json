@@ -93,6 +93,10 @@
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
+    "modulePathIgnorePatterns": [
+      "auth",
+      "users"
+    ],
     "collectCoverageFrom": [
       "**/*.(t|j)s",
       "!**/*.module.ts",
