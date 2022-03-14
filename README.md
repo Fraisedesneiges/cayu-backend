@@ -164,7 +164,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
   > You can find the Swagger there when running the projec : **http://localhost:8080/swagger/**
 
   <p>
-    <img width="850" height="auto" src="ressource/swagger.png"\>
+    <img width="850" height="auto" src="ressource/swagger.PNG"\>
   </p>
 
 - [ ] In addition to requireness and types, do you provide a comment for every property of your documentation? **[1 point]**
