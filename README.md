@@ -243,7 +243,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
   > _Please provide a link to the more complete summary you have._
   >
-  > Here is the last and more complete summary we have : **[Jest summary Link](https://github.com/gededev/cayu-backend/runs/5530168825?check_suite_focus=true)**
+  > Here is the last and more complete summary we have : **[Jest summary Link](https://github.com/gededev/cayu-backend/runs/5545203282?check_suite_focus=true)**
 
   <p>
     <img width="850" height="auto" src="ressource/GithubActionsLogs.PNG"\>
