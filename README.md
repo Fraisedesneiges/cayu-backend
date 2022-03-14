@@ -264,7 +264,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
   > _Please provide a link to the latest test summary you have, hosted on Github Action or similar._
   >
-  > On each push to the main branch Jest is runned, via **[Github Actions](https://github.com/gededev/cayu-backend/blob/main/.github/workflows/main.yml)**, here is the screen of Github Action logs, or you can get with this **[link](https://github.com/gededev/cayu-backend/actions/runs/1977708193)**:
+  > On each push to the main branch Jest is runned, via **[Github Actions](https://github.com/gededev/cayu-backend/blob/main/.github/workflows/main.yml)**, here is the screen of Github Action logs, or you can get with this **[link](https://github.com/gededev/cayu-backend/runs/5545203282?check_suite_focus=true)**:
 
   <p>
     <img width="850" height="auto" src="ressource/GithubActionsJestLogs.png"\>
