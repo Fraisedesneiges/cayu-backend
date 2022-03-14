@@ -1,4 +1,4 @@
-#  Cayu Backend
+# Cayu Backend
 
 ## Installation
 
@@ -82,35 +82,35 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Input validation
 
-- [✔️] Strictly and deeply validate the type of every input (`params, querystring, body`) at runtime before any processing. **[1 point]** 🔵
+- ✅ Strictly and deeply validate the type of every input (`params, querystring, body`) at runtime before any processing. **[1 point]** 🔵
 
   > _How did you achieve this?_
   >
   > We used the global ValidationPipe() on our NestJs app to ensure some validation inputs. It works thanks to Data Object Models containaing decorators around their attributes. At each request, if the body is specified with a Dto class containings class-validators decorators around the attributes, they will be verified and stop the process if said types / format are not valid.
 
-- [✔️] Ensure the type of every input can be inferred by Typescript at any time and properly propagates across the app. **[1 point]** 🔵
+- ✅ Ensure the type of every input can be inferred by Typescript at any time and properly propagates across the app. **[1 point]** 🔵
 
   > _How did you achieve this?_
-  We tried to make the best use of Intellisense coupled with typed functions and classes in order to help with the autocompletion and verification during developement.
+  > We tried to make the best use of Intellisense coupled with typed functions and classes in order to help with the autocompletion and verification during developement.
 
 - [ ] Ensure the static and runtime input types are always synced. **[1 point]** 🔵
   > _How did you achieve this? If extra commands must be run before the typescript checking, how do you ensure there are run?_
 
 ### Authorisation
 
-- [✔️] Check the current user is allowed to call this endpoint. **[1 point]** 🔵
+- ✅ Check the current user is allowed to call this endpoint. **[1 point]** 🔵
 
   > _How did you achieve this?_
   >
   > We made use of Passport strategy pattern using guards around the routes that needs protection. More specifically, we used an AuthGuard that checks if provided credentials matches credentials from a given mail, which then returns a JWT. The protected resources routes contains a JWTGuard which checks if the Bearer has a valid token.
 
-- [✔️] Check the current user is allowed to perform the action on a specific resource. **[1 point]** 🔵
+- ✅ Check the current user is allowed to perform the action on a specific resource. **[1 point]** 🔵
 
   > _How did you achieve this?_
   >
   > Unfinished. The JwtGuard can ensure that a JWT is valid, thus blocking the request if unvalid. Our endpoint is not finished but the route we wanted to securize using that pattern was for a Post to modify the username.
 
-- [✔️] Did you build or use an authorisation framework, making the authorisation widely used in your code base? **[1 point]**
+- ✅ Did you build or use an authorisation framework, making the authorisation widely used in your code base? **[1 point]**
 
   > _How did you achieve this?_
   >
@@ -126,7 +126,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Secret and configuration management
 
-- [✔️] Use a hash for any sensitive data you do not need to store as plain text. 🔵
+- ✅ Use a hash for any sensitive data you do not need to store as plain text. 🔵
 
   > _Also check this if you do not store any password or such data (and say it here)._
   >
@@ -145,7 +145,7 @@ In your explanation, please provide links (file + line) to relevant parts of you
 
 ### Package management
 
-- [✔️] Do not use any package with less than 50k downloads a week. 🔵
+- ✅ Do not use any package with less than 50k downloads a week. 🔵
 
 - [ ] Did you write some automated tools that check no unpopular dependency was installed? If yes, ensure it runs frequently. **[1 point]**
 
