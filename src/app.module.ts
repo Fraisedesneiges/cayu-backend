@@ -12,7 +12,7 @@ import { AuthController } from './auth/auth.controller';
 import { TypeOrmModuleConfigured } from './orm.config';
 
 @Module({
-  imports: [TypeOrmModuleConfigured, HttpModule, AuthModule, UsersModule],
+  imports: [TypeOrmModuleConfigured, HttpModule, AuthModule, UsersModule ],
   controllers: [
     AppController,
     ProductsController,

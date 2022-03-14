@@ -1,3 +1,4 @@
+import { userDto } from 'src/dto/userDto'; 
 import {
   Body,
   Controller,
@@ -17,8 +18,8 @@ export class UsersController {
   constructor(private usersService: UsersService) {}
 
   @Post('register')
-  create(@Body() user: User) {
-    const newUser = this.usersService.createUser(user);
+  create(@Body() user: userDto) {
+    let newUser = this.usersService.createUser(user);
     return newUser
       .then((value) => {
         return 'User created';
